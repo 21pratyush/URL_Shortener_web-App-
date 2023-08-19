@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>URL Shortener</title>
+    <link rel="stylesheet" href="../static/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>URL Shortener</h1>
+        <form method="POST">
+            <input type="text" name="original_url" placeholder="Enter URL" required>
+            <button type="submit">Shorten</button>
+            <input type="number" name="short_code_length" placeholder="Enter length" required min="1">
+        </form>
+
+        {% if shortened_url %}
+        <div class="shortened-url">
+            <p>
+                Shortened URL: <a href="{{ request.host_url }}{{ shortened_url }}" id="shortened-url"
+                    target="_blank">{{shortened_url}}</a>
+                <button onclick="copyToClipboard()" class="btn">Copy</button>
+                <button onclick="openUrl()" class="btn">Open</button>
+            </p>
+        </div>
+        {% endif %}
+    </div>
+    <script src="../static/script.js"></script>
+</body>
+
+</html>
